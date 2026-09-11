@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "anima": {
+      "url": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ${ANIMA_API_KEY}"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "anima",
+  "owner": {
+    "name": "Anima Labs",
+    "email": "diyan@useanima.sh",
+    "url": "https://useanima.sh"
+  },
+  "metadata": {
+    "description": "Anima — agent identity: email, US phone/SMS, voice, encrypted vault, MCP.",
+    "version": "0.1.0",
+    "pluginRoot": ".."
+  },
+  "plugins": [
+    {
+      "name": "anima",
+      "source": "..",
+      "description": "Identity infrastructure for AI agents via Anima MCP (mcp.useanima.sh).",
+      "version": "0.1.0",
+      "author": {
+        "name": "Anima Labs",
+        "email": "diyan@useanima.sh"
+      },
+      "homepage": "https://useanima.sh",
+      "repository": "https://github.com/anima-labs-ai/anima-plugin",
+      "license": "MIT",
+      "keywords": [
+        "mcp",
+        "email",
+        "sms",
+        "phone",
+        "voice",
+        "vault",
+        "identity"
+      ]
+    }
+  ]
+}
