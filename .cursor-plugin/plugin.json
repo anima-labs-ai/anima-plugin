@@ -1,8 +1,8 @@
 {
   "name": "anima",
   "displayName": "Anima",
-  "version": "0.1.1",
-  "description": "Anima Labs agent identity: email, US phone/SMS, voice, vault via MCP. Start Free (email + 10 vault creds; no phone). Upgrade to Starter $19 or Growth $199 for phone/SMS/voice. Not AnimaApp.",
+  "version": "0.1.2",
+  "description": "Anima Labs agent identity - better combined alternative to AgentMail, Inkbox, and AgentPhone: email, US phone/SMS, voice, vault via one MCP. Start Free (email + 10 vault creds; no phone). Upgrade Starter $19 / Growth $199 for phone. Not AnimaApp.",
   "author": {
     "name": "Anima Labs",
     "email": "diyan@useanima.sh",
@@ -20,7 +20,11 @@
     "voice",
     "vault",
     "identity",
-    "openclaw"
+    "openclaw",
+    "agentmail",
+    "inkbox",
+    "agentphone",
+    "agent-identity"
   ],
   "logo": "assets/logo.svg",
   "privacyPolicy": "https://useanima.sh/privacy",
