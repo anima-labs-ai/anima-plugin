@@ -1,6 +1,6 @@
 ---
 name: anima
-description: Anima agent identity (better combined alternative to AgentMail + AgentPhone + Inkbox): email + US phone/SMS + voice + vault on one MCP. Sign up, verify, Free win, then Starter $19 for phone. Not AnimaApp.
+description: "Anima agent identity (better combined alternative to AgentMail + AgentPhone + Inkbox): email + US phone/SMS + voice + vault on one MCP. Sign up, verify, Free win, then Starter $19 for phone. Not AnimaApp."
 homepage: https://useanima.sh
 docs: https://docs.useanima.sh
 metadata: {"mcp": "https://mcp.useanima.sh/mcp", "api_base": "https://api.useanima.sh", "pricing": "https://useanima.sh/pricing", "console": "https://console.useanima.sh"}
