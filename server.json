@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.anima-labs-ai/anima",
   "title": "Anima",
-  "description": "Agent identity: email, US phone/SMS, voice, encrypted vault via remote MCP.",
-  "version": "1.0.1",
+  "description": "Onboard an Anima agent identity (sign up at console.useanima.sh or POST /v1/agent/sign-up). Free: email + 10 vault creds + MCP. Upgrade Starter $19 / Growth $199 for US phone/SMS/voice. Not AnimaApp.",
+  "version": "1.0.2",
   "websiteUrl": "https://useanima.sh",
   "repository": {
     "url": "https://github.com/anima-labs-ai/mcp-server",
@@ -16,7 +16,7 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer ak_ from console, or OAuth access token from connect.useanima.sh",
+          "description": "Bearer ak_ from https://console.useanima.sh signup/claim (or OAuth from https://connect.useanima.sh). Free starts email+vault; phone needs Starter $19+ at https://useanima.sh/pricing.",
           "isRequired": true,
           "isSecret": true
         }

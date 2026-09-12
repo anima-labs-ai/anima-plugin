@@ -6,16 +6,16 @@
     "url": "https://useanima.sh"
   },
   "metadata": {
-    "description": "Anima — agent identity: email, US phone/SMS, voice, encrypted vault, MCP.",
-    "version": "0.1.0",
+    "description": "Anima - agent identity. Free email+vault; upgrade Starter $19 / Growth $199 for phone/SMS/voice.",
+    "version": "0.1.1",
     "pluginRoot": ".."
   },
   "plugins": [
     {
       "name": "anima",
       "source": "..",
-      "description": "Identity infrastructure for AI agents via Anima MCP (mcp.useanima.sh).",
-      "version": "0.1.0",
+      "description": "Anima Labs agent identity: email, US phone/SMS, voice, vault via MCP. Start Free (email + 10 vault creds; no phone). Upgrade to Starter $19 or Growth $199 for phone/SMS/voice. Not AnimaApp.",
+      "version": "0.1.1",
       "author": {
         "name": "Anima Labs",
         "email": "diyan@useanima.sh"

@@ -1,7 +1,7 @@
 {
   "name": "anima",
-  "version": "0.1.0",
-  "description": "Identity infrastructure for AI agents — email, US phone/SMS, voice, and encrypted vault via Anima MCP.",
+  "version": "0.1.1",
+  "description": "Anima Labs agent identity: email, US phone/SMS, voice, vault via MCP. Start Free (email + 10 vault creds; no phone). Upgrade to Starter $19 or Growth $199 for phone/SMS/voice. Not AnimaApp.",
   "author": {
     "name": "Anima Labs",
     "email": "diyan@useanima.sh"
@@ -21,7 +21,7 @@
   ],
   "mcpServers": {
     "anima": {
-      "url": "https://mcp.useanima.sh",
+      "url": "https://mcp.useanima.sh/mcp",
       "headers": {
         "Authorization": "Bearer ${ANIMA_API_KEY}"
       }

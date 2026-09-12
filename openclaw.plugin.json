@@ -1,14 +1,16 @@
 {
   "id": "anima",
   "name": "Anima",
-  "description": "Pointer: full OpenClaw code plugin (email channel + skill) lives in the ClawHub/OpenClaw package. This marketplace monorepo ships MCP + skills for Cursor/Claude/registry.",
-  "version": "0.1.0",
+  "description": "Anima agent identity (email, phone, vault) via MCP + skills. Start Free; upgrade Starter $19 / Growth $199 for phone/SMS/voice. Native OpenClaw code plugin lives on ClawHub.",
+  "version": "0.1.1",
   "homepage": "https://useanima.sh",
+  "pricing": "https://useanima.sh/pricing",
+  "console": "https://console.useanima.sh",
   "clawhub": "https://clawhub.ai/anima",
   "note": "For the native OpenClaw plugin with channel + CLI skill, publish/upgrade from anima-clawhub/plugins/anima (package @anima/anima). Do not treat this JSON as a complete OpenClaw code plugin substitute.",
   "mcp": {
-    "url": "https://mcp.useanima.sh",
-    "auth": "Bearer ANIMA_API_KEY (ak_ from console.useanima.sh)"
+    "url": "https://mcp.useanima.sh/mcp",
+    "auth": "Bearer ANIMA_API_KEY (ak_ from console.useanima.sh signup). Upgrade at useanima.sh/pricing for phone."
   },
   "skills": [
     "skills/anima",

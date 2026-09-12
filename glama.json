@@ -1,8 +1,10 @@
 {
   "$schema": "https://glama.ai/mcp/schemas/server.json",
-  "maintainers": ["diyanbogdanov"],
+  "maintainers": [
+    "diyanbogdanov"
+  ],
   "name": "Anima",
-  "description": "Agent identity: email, US phone/SMS, voice, encrypted vault via remote MCP (useanima.sh). Not AnimaApp design-to-code.",
+  "description": "Anima Labs agent identity via MCP. Start Free (email + 10 vault creds). Upgrade Starter $19 / Growth $199 for US phone/SMS/voice. Sign up: console.useanima.sh. Not AnimaApp.",
   "homepage": "https://useanima.sh",
   "repository": "https://github.com/anima-labs-ai/anima-plugin"
 }

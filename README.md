@@ -1,46 +1,79 @@
 # Anima plugin (multi-catalog)
 
-**Anima** ([useanima.sh](https://useanima.sh)) — identity infrastructure for AI agents: **email**, **US phone/SMS**, **voice**, **encrypted vault**, and **MCP**.  
-**No cards / wallets / x402.**
+**Anima** ([useanima.sh](https://useanima.sh)) - identity infrastructure for AI agents: **email**, **US phone/SMS**, **voice**, **encrypted vault**, and **MCP**.
+**No cards / wallets / x402.** Not [AnimaApp](https://animaapp.com) (design-to-code).
+
+**Free $0:** 3 agents, 3,000 emails/mo, 10 vault creds, MCP included. **No phone / SMS / voice.**
+**Starter $19/mo:** first US number, SMS, 50 voice min. **Growth $199/mo:** more agents, numbers, volume.
+Pay in [console Billing](https://console.useanima.sh). Plans: [useanima.sh/pricing](https://useanima.sh/pricing).
 
 | | |
 |---|---|
 | Product | https://useanima.sh |
-| Docs | https://docs.useanima.sh · [llms.txt](https://docs.useanima.sh/llms.txt) |
 | Console (API keys `ak_`) | https://console.useanima.sh |
-| MCP | https://mcp.useanima.sh |
+| Pricing | https://useanima.sh/pricing |
+| Plan limits | https://docs.useanima.sh/pricing-and-limits.md |
+| Docs | https://docs.useanima.sh · [llms.txt](https://docs.useanima.sh/llms.txt) |
+| Canonical skill | https://useanima.sh/skill.md |
+| MCP host | https://mcp.useanima.sh |
+| MCP tools path | https://mcp.useanima.sh/mcp |
+| OAuth | https://connect.useanima.sh |
 | ClawHub (live) | https://clawhub.ai/anima |
 | Privacy | https://useanima.sh/privacy |
 
-Auth today is typically **`Authorization: Bearer ak_...`** (`ANIMA_API_KEY`). Official Claude Directory and some OpenAI listing paths expect **OAuth** — see [SUBMISSION.md](./SUBMISSION.md).
+Auth today is typically **`Authorization: Bearer ak_...`** (`ANIMA_API_KEY`). Official Claude Directory and some OpenAI listing paths expect **OAuth** at https://connect.useanima.sh - see [SUBMISSION.md](./SUBMISSION.md).
 
 ---
 
-## Install
+## Get an API key / sign up (do this before install JSON)
+
+Do not paste MCP JSON first. Get a key, then connect.
+
+**Path A - Human console:** open https://console.useanima.sh, create or claim the org, copy an agent API key (`ak_...`), set `ANIMA_API_KEY`.
+
+**Path B - Agent self-signup** (needs explicit human OK on their email):
+
+```bash
+curl -X POST https://api.useanima.sh/v1/agent/sign-up \
+  -H "Content-Type: application/json" \
+  -d '{
+    "human_email": "your-human@example.com",
+    "username": "preferred-username",
+    "provision_vault": true
+  }'
+```
+
+1. Save `api_key` and `inbox_id`. Never put `ak_` in chat memory.
+2. Agent emails the human. Human pastes the 6-digit OTP or claims at https://console.useanima.sh
+3. Do one Free win: send email or store a vault credential (Free includes 10).
+4. Phone/SMS/voice need **Starter $19+**. When a 402 / plan gate hits, upgrade at https://useanima.sh/pricing in console **Billing**. Prefer Starter for the first number.
+
+Paste into Cursor / Claude / OpenClaw: `Read useanima.sh/skill.md and get me set up with Anima`
+
+---
+
+## Install (after you have `ANIMA_API_KEY`)
+
+Root [`mcp.json`](./mcp.json) uses `${ANIMA_API_KEY}` and URL `https://mcp.useanima.sh/mcp` - never commit real keys.
 
 ### Cursor / Grok Bot
 
-1. Get an agent API key from [console.useanima.sh](https://console.useanima.sh).
-2. **Marketplace** (after publish): install **Anima** from [Cursor Marketplace](https://cursor.com/marketplace) / Grok Bot → Settings → Plugins. Set `ANIMA_API_KEY`.
-3. **Local test now:**
+1. Marketplace (after publish): install **Anima** from [Cursor Marketplace](https://cursor.com/marketplace) / Grok Bot → Settings → Plugins. Set `ANIMA_API_KEY`.
+2. Local test now:
 
 ```bash
 cp -R . ~/.cursor/plugins/local/anima
 # reload Cursor / Grok Bot; set ANIMA_API_KEY in plugin variables or env
 ```
 
-Root [`mcp.json`](./mcp.json) uses `${ANIMA_API_KEY}` — never commit real keys.
-
 ### Claude (custom connector)
 
 1. Claude.ai → **Customize → Connectors → Add custom connector**
-2. URL: `https://mcp.useanima.sh`
+2. URL: `https://mcp.useanima.sh/mcp`
 3. Auth: Bearer token / header with your `ak_` key (custom connectors).
-4. **Official Connectors Directory** requires Team/Enterprise + **OAuth** — not API-key-only. Tracked in [SUBMISSION.md](./SUBMISSION.md).
+4. **Official Connectors Directory** requires Team/Enterprise + **OAuth** at https://connect.useanima.sh - tracked in [SUBMISSION.md](./SUBMISSION.md).
 
 ### Claude Code / Cowork (community marketplace)
-
-When this repo is public on GitHub:
 
 ```bash
 claude plugin marketplace add anima-labs-ai/anima-plugin
@@ -51,16 +84,14 @@ Or submit via https://platform.claude.com/plugins/submit (see SUBMISSION.md). Se
 
 ### Codex / OpenAI (remote MCP)
 
-Point a remote MCP client at:
-
-- URL: `https://mcp.useanima.sh`
+- URL: `https://mcp.useanima.sh/mcp`
 - Header: `Authorization: Bearer $ANIMA_API_KEY`
 
 For the shared **ChatGPT + Codex Plugins Directory**, use the OpenAI portal (org verification + review). Details in [SUBMISSION.md](./SUBMISSION.md).
 
 ### Muse Code (Meta)
 
-No public catalog — configure `~/.config/muse/settings.json` (shape from Meta docs):
+No public catalog - configure `~/.config/muse/settings.json` (shape from Meta docs):
 
 ```json
 {
@@ -68,7 +99,7 @@ No public catalog — configure `~/.config/muse/settings.json` (shape from Meta 
   "mcp_servers": {
     "anima": {
       "transport": "streamable_http",
-      "url": "https://mcp.useanima.sh",
+      "url": "https://mcp.useanima.sh/mcp",
       "headers": {
         "Authorization": "Bearer ak_YOUR_KEY"
       },
@@ -83,26 +114,29 @@ Skills in this repo can be imported where Muse supports Claude-compatible skills
 
 ### ClawHub / OpenClaw
 
-Already live: **https://clawhub.ai/anima**  
+Already live: **https://clawhub.ai/anima**
 Native OpenClaw code plugin (channel + skill) is maintained separately; this monorepo includes an [`openclaw.plugin.json`](./openclaw.plugin.json) pointer plus portable skills.
 
 ### Official MCP Registry
 
-[`server.json`](./server.json) registers remote MCP as **`sh.useanima/anima`** → `https://mcp.useanima.sh`.
-
-**Namespace auth (pick one):**
-
-| Method | Name form | When to use |
-|---|---|---|
-| **DNS / HTTP** (preferred) | `sh.useanima/anima` | You control `useanima.sh` TXT or `/.well-known/mcp-registry-auth` |
-| **GitHub OAuth** | `io.github.anima-labs-ai/anima` | Faster if DNS proof is blocked; change `name` in `server.json` before publish |
+[`server.json`](./server.json) registers remote MCP as **`io.github.anima-labs-ai/anima`** → `https://mcp.useanima.sh/mcp`.
 
 ```bash
-# after mcp-publisher login (dns|http|github):
+# after mcp-publisher login (github|dns|http):
 mcp-publisher publish
 ```
 
 ---
+
+## Convert: Free → Starter / Growth
+
+| Need | Plan |
+|---|---|
+| Email + 10 vault creds + MCP | Free $0 |
+| First US number, SMS, 50 voice min | Starter $19/mo |
+| More agents, 10 numbers, 600 voice min | Growth $199/mo |
+
+Human upgrades at https://useanima.sh/pricing and pays in https://console.useanima.sh **Billing**. MCP tool calls are included; SMS/voice still meter. TCPA attest in console - agents never bypass gates.
 
 ## Repo layout
 
@@ -133,6 +167,7 @@ anima-plugin/
 - Never paste `ak_` into chat memory, skill notes, or transcripts.
 - Never send the key to hosts other than Anima (`api.useanima.sh`, `mcp.useanima.sh`).
 - Prefer vault **use-never-see** paths; do not pitch payment cards or wallets.
+- Get human OK before submitting their email to sign-up.
 
 ## License
 
