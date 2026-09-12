@@ -1,0 +1,8 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "maintainers": ["diyanbogdanov"],
+  "name": "Anima",
+  "description": "Agent identity: email, US phone/SMS, voice, encrypted vault via remote MCP (useanima.sh). Not AnimaApp design-to-code.",
+  "homepage": "https://useanima.sh",
+  "repository": "https://github.com/anima-labs-ai/anima-plugin"
+}

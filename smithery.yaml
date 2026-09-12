@@ -1,0 +1,21 @@
+# Smithery publishing metadata for Anima remote MCP
+name: "@anima/anima"
+title: Anima
+description: Agent identity infrastructure - email, US phone/SMS, voice, encrypted vault via MCP. Not AnimaApp (design-to-code).
+homepage: https://useanima.sh
+repository: https://github.com/anima-labs-ai/anima-plugin
+privacy: https://useanima.sh/privacy
+mcp:
+  transport: streamable-http
+  url: https://mcp.useanima.sh/mcp
+  oauth: https://connect.useanima.sh
+categories:
+  - identity
+  - communication
+  - agents
+tags:
+  - mcp
+  - email
+  - sms
+  - vault
+  - agent-identity
