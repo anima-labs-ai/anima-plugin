@@ -1,0 +1,22 @@
+{
+  "name": "anima",
+  "version": "0.1.2",
+  "description": "Anima Labs agent identity via MCP - email, US phone/SMS, voice, encrypted vault. Start Free (email + 10 vault creds). Upgrade Starter $19 / Growth $199 for phone. Not AnimaApp.",
+  "settings": [
+    {
+      "name": "Anima API Key",
+      "description": "Agent API key (ak_...) from https://console.useanima.sh. Free includes email + vault. Phone/SMS/voice need Starter $19+.",
+      "envVar": "ANIMA_API_KEY",
+      "sensitive": true
+    }
+  ],
+  "mcpServers": {
+    "anima": {
+      "httpUrl": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer $ANIMA_API_KEY"
+      }
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

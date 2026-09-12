@@ -74,6 +74,103 @@ Human opens https://console.useanima.sh, creates/claims the org, copies `ak_...`
 
 Paste prompt: `Read useanima.sh/skill.md and get me set up with Anima`
 
+## Gemini CLI
+
+```bash
+gemini extensions install https://github.com/anima-labs-ai/anima-plugin
+```
+
+Or settings `mcpServers.anima.httpUrl` = `https://mcp.useanima.sh/mcp` with `Authorization: Bearer $ANIMA_API_KEY`. Manifest: `gemini-extension.json`.
+
+## Continue.dev
+
+`.continue/mcpServers/anima.yaml`:
+
+```yaml
+name: Anima Labs
+version: 0.1.2
+schema: v1
+mcpServers:
+  - name: anima
+    type: streamable-http
+    url: https://mcp.useanima.sh/mcp
+    headers:
+      Authorization: Bearer ${ANIMA_API_KEY}
+```
+
+## Windsurf Cascade
+
+`~/.codeium/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "anima": {
+      "serverUrl": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:ANIMA_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+## LibreChat
+
+```yaml
+mcpServers:
+  anima:
+    type: streamable-http
+    url: https://mcp.useanima.sh/mcp
+    headers:
+      Authorization: "Bearer ${ANIMA_API_KEY}"
+```
+
+## Open WebUI
+
+Streamable HTTP MCP URL `https://mcp.useanima.sh/mcp` with header `Authorization: Bearer ak_...`.
+
+## Muse Code (Meta)
+
+`~/.config/muse/settings.json`:
+
+```json
+{
+  "schema_version": 1,
+  "mcp_servers": {
+    "anima": {
+      "transport": "streamable_http",
+      "url": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ak_YOUR_KEY"
+      },
+      "enabled": true,
+      "mode": "optional"
+    }
+  }
+}
+```
+
+## AnythingLLM
+
+```json
+{
+  "mcpServers": {
+    "anima": {
+      "type": "streamable",
+      "url": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ${ANIMA_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+## Flowise
+
+Custom MCP / MCP Client node: URL `https://mcp.useanima.sh/mcp`, header `Authorization: Bearer ak_...`.
+
 ## Convert
 
 | Gate | What to tell the human |

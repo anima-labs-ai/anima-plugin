@@ -128,6 +128,110 @@ Or add to `.vscode/mcp.json` / user MCP config after you have `ANIMA_API_KEY`:
 ```
 
 
+### Gemini CLI
+
+Gallery discovery uses topic `gemini-cli-extension` + root [`gemini-extension.json`](./gemini-extension.json).
+
+```bash
+gemini extensions install https://github.com/anima-labs-ai/anima-plugin
+# set ANIMA_API_KEY when prompted (or: gemini extensions config anima)
+```
+
+Manual `~/.gemini/settings.json` (or project `.gemini/settings.json`):
+
+```json
+{
+  "mcpServers": {
+    "anima": {
+      "httpUrl": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer $ANIMA_API_KEY"
+      }
+    }
+  }
+}
+```
+
+### Continue.dev
+
+Add `.continue/mcpServers/anima.yaml` (or paste JSON MCP into `.continue/mcpServers/`):
+
+```yaml
+name: Anima Labs
+version: 0.1.2
+schema: v1
+mcpServers:
+  - name: anima
+    type: streamable-http
+    url: https://mcp.useanima.sh/mcp
+    headers:
+      Authorization: Bearer ${ANIMA_API_KEY}
+```
+
+### Windsurf Cascade
+
+Edit `~/.codeium/mcp_config.json` (Settings → Windsurf Settings → View Raw Config):
+
+```json
+{
+  "mcpServers": {
+    "anima": {
+      "serverUrl": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:ANIMA_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+### LibreChat
+
+In `librechat.yaml` (or UI MCP settings):
+
+```yaml
+mcpServers:
+  anima:
+    type: streamable-http
+    url: https://mcp.useanima.sh/mcp
+    headers:
+      Authorization: "Bearer ${ANIMA_API_KEY}"
+```
+
+### Open WebUI
+
+Admin → Settings → Connections / Tools → add MCP (Streamable HTTP):
+
+- URL: `https://mcp.useanima.sh/mcp`
+- Header: `Authorization: Bearer ak_...`
+
+Or equivalent in `mcp.json` / tools config if your Open WebUI build uses a file.
+
+### AnythingLLM
+
+Workspace → Agent skills / MCP → add server, or `plugins/anythingllm_mcp_servers.json`:
+
+```json
+{
+  "mcpServers": {
+    "anima": {
+      "type": "streamable",
+      "url": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ${ANIMA_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+### Flowise
+
+Add a Custom MCP / MCP Client node (Streamable HTTP):
+
+- MCP URL: `https://mcp.useanima.sh/mcp`
+- Headers: `Authorization: Bearer ak_...`
+
 ### Muse Code (Meta)
 
 No public catalog - configure `~/.config/muse/settings.json` (shape from Meta docs):
@@ -186,6 +290,8 @@ anima-plugin/
 ├── llms-install.md
 ├── SUBMISSION.md
 ├── server.json                 # official MCP registry
+├── gemini-extension.json       # Gemini CLI gallery (topic gemini-cli-extension)
+├── GEMINI.md                   # Gemini CLI extension context
 ├── mcp.json                    # Cursor / Agent Plugins MCP
 ├── plugin.json                 # Agent Plugins 1.0
 ├── openclaw.plugin.json        # pointer to ClawHub OpenClaw plugin
