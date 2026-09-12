@@ -89,6 +89,38 @@ Or submit via https://platform.claude.com/plugins/submit (see SUBMISSION.md). Se
 
 For the shared **ChatGPT + Codex Plugins Directory**, use the OpenAI portal (org verification + review). Details in [SUBMISSION.md](./SUBMISSION.md).
 
+
+### VS Code / Copilot
+
+One-click install (Stable): [Add Anima MCP in VS Code](vscode:mcp/install?%7B%22name%22%3A%22anima%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//mcp.useanima.sh/mcp%22%2C%22headers%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3Aanima-api-key%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22anima-api-key%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Anima%20API%20key%20%28ak_...%29%20from%20https%3A//console.useanima.sh%22%2C%22password%22%3Atrue%7D%5D%7D)
+
+Insiders: [Add Anima MCP in VS Code Insiders](vscode-insiders:mcp/install?%7B%22name%22%3A%22anima%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//mcp.useanima.sh/mcp%22%2C%22headers%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3Aanima-api-key%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22anima-api-key%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Anima%20API%20key%20%28ak_...%29%20from%20https%3A//console.useanima.sh%22%2C%22password%22%3Atrue%7D%5D%7D)
+
+Or add to `.vscode/mcp.json` / user MCP config after you have `ANIMA_API_KEY`:
+
+```json
+{
+  "servers": {
+    "anima": {
+      "type": "http",
+      "url": "https://mcp.useanima.sh/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:anima-api-key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "id": "anima-api-key",
+      "type": "promptString",
+      "description": "Anima API key (ak_...) from https://console.useanima.sh",
+      "password": true
+    }
+  ]
+}
+```
+
+
 ### Muse Code (Meta)
 
 No public catalog - configure `~/.config/muse/settings.json` (shape from Meta docs):
